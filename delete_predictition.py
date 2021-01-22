@@ -23,9 +23,8 @@ for year in years:
 
     # 寫入第一列資訊
     title = ["PostDate", "Stkcd", "TotalPosts", "AvgReadings", "AvgComments", "AvgNetComments", "AvgThumbUps", "AvgUserBarAge", "AvgUserInfluIndex", "AvgUserPosts", "AvgUserComments", "Indcd"]
-    for i in range(1, stock_sheet.max_column+1):
-        new_stock_sheet.cell(row=1, column=i, value=title[i-1])
-        delete_stock_sheet.cell(row=1, column=i, value=title[i-1])
+    new_stock_sheet.append(title)
+    delete_stock_sheet.append(title)
 
     # 第二列開始讀入資料
     predict_stkcd = []
