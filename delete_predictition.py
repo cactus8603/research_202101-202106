@@ -2,12 +2,19 @@ import pandas as pd
 from tqdm import tqdm, trange
 import openpyxl 
 
-years = ["2017", "2018", "2019"]
-
+# years = ["2017", "2018", "2019"]
+years = ["2017"]
 for year in years:
+    """
     # 讀取stock_code內容
     stock = openpyxl.load_workbook("./Result/" + str(year) + "/" + str(year) + "_加入產業代碼股吧.xlsx")
     stock_sheet = stock['工作表1']
+    """
+
+    # 讀取stock_code內容
+    stock = openpyxl.load_workbook("./Result/" + str(year) + "/" + str(year) + "_刪除金融產業後剩餘股吧名單.xlsx")
+    stock_sheet = stock['Sheet']
+
 
     # 讀取分析師預測內容
     predict_stock = openpyxl.load_workbook("./" + str(year) + "/分析師預測" + str(year) + ".xlsx")
