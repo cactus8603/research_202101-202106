@@ -96,7 +96,7 @@ for nums in range(num+1):
             new_row = new_stock_sheet.max_row+1       
 
             temp = int(stock_stkcd / (10**(len(str(stock_stkcd))-1)))
-
+            
             # 寫入indcd
             if(industrial_code_indcd in industrial_code_to_delete):
                 # 要刪除的
