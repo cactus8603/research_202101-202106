@@ -11,6 +11,7 @@ industrial_code = []
 industrial_code_to_delete = ["J66", "J67", "J68", "J69"]
 delete_total_kinds = []
 # year = 2017
+# year = 2018
 year = 2019
 
 with open(str(year) + '/' + str(year) + '股吧.csv', newline='') as stock:
@@ -78,17 +79,20 @@ for i in trange(1, len(total_stock)):
 
         # 寫入indcd
         if(industrial_code_indcd in industrial_code_to_delete):
-            # 要刪除的
+            # 刪除金融股並記錄
             delete_stock.append(total_stock[i])
             delete_stock[len(delete_stock)-1][11] = industrial_code_indcd
             if (stock_stkcd not in delete_total_kinds):
                 delete_total_kinds.append(stock_stkcd)
         elif( temp == 2 or temp == 9 ):
-            # 要刪除的
+            # 刪除2或9開頭股票代碼
+            continue
+            """
             delete_stock.append(total_stock[i])
             delete_stock[len(delete_stock)-1][11] = industrial_code_indcd
             if (stock_stkcd not in delete_total_kinds):
                 delete_total_kinds.append(stock_stkcd)
+            """
         else:
             # 不刪除的
             remain_stock.append(total_stock[i])
