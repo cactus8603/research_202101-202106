@@ -10,9 +10,9 @@ industrial_code = []
 # 欲刪除產業代碼
 industrial_code_to_delete = ["J66", "J67", "J68", "J69"]
 delete_total_kinds = []
-# year = 2017
+year = 2017
 # year = 2018
-year = 2019
+# year = 2019
 
 with open(str(year) + '/' + str(year) + '股吧.csv', newline='') as stock:
     rows = csv.reader(stock)
@@ -68,7 +68,8 @@ for i in trange(1, len(total_stock)):
     # 取出產業代碼中的stkcd
     industrial_code_stkcd = int(industrial_code[row_temp][0])
 
-    temp = int( int(stock_stkcd) / (10**(len(str(stock_stkcd))-1)))
+    # temp = int( int(stock_stkcd) / (10**(len(str(stock_stkcd))-1)))
+    temp = int( int(stock_stkcd) / (10**5))
 
     if(stock_stkcd==industrial_code_stkcd):
         # print(stock_stkcd, industrial_code_stkcd)
@@ -86,7 +87,7 @@ for i in trange(1, len(total_stock)):
                 delete_total_kinds.append(stock_stkcd)
         elif( temp == 2 or temp == 9 ):
             # 刪除2或9開頭股票代碼
-            continue
+            continue;
             """
             delete_stock.append(total_stock[i])
             delete_stock[len(delete_stock)-1][11] = industrial_code_indcd
@@ -114,6 +115,7 @@ with open('./Result/' + str(year) + '/' + str(year) + '_金融產業股吧名單
     delete_stock[1][13] = len(delete_total_kinds)
 
     writeCsv.writerows(delete_stock)
+    # print(delete_stock[0][1])
 
 
 with open('./Result/' + str(year) + '/' + str(year) + '_刪除金融產業後剩餘股吧名單.csv','w', newline='') as f:

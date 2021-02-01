@@ -13,7 +13,7 @@ for year in years:
 
     # 讀取stock_code內容
     stock = openpyxl.load_workbook("./Result/" + str(year) + "/" + str(year) + "_刪除金融產業後剩餘股吧名單.xlsx")
-    stock_sheet = stock['Sheet']
+    stock_sheet = stock[str(year) + '_刪除金融產業後剩餘股吧名單']
 
 
     # 讀取分析師預測內容
