@@ -9,28 +9,14 @@ total_stock = []
 AF_Actual = []
 predict_stock = []
 
-<<<<<<< HEAD
-
-# 先篩選在"刪除無分析師預測後剩餘股吧名單.csv"檔案中，AvgUserInfluIndex大於等於2.5的項目
-with open('./Result/'+ str(year) + '/' + str(year) + '_刪除無分析師預測後剩餘股吧名單.csv', newline='', encoding="utf-8") as stock:
-=======
 with open('./Result/'+ str(year) + '/' + str(year) + '_刪除無分析師預測後剩餘股吧名單.csv', newline='', encoding="utf-8", errors='ignore') as stock:
->>>>>>> 458ed2e3aa222042a11dd957688ad6974e4dd142
     rows = csv.reader(stock)
 
     header = next(rows)
     total_stock.append(header)
-<<<<<<< HEAD
-=======
     print(header[8])
->>>>>>> 458ed2e3aa222042a11dd957688ad6974e4dd142
     for row in rows:
         total_stock.append(row)
-<<<<<<< HEAD
-        
-
-with open('./'+ str(year) + '/AF_Actual' + str(year) + '.csv', newline='', encoding="utf-8") as AF:
-=======
 
 with open("./" + str(year) + "/分析師預測" + str(year) +  ".csv", newline='', encoding="utf-8", errors='ignore') as predict:
     rows = csv.reader(predict)
@@ -40,7 +26,6 @@ with open("./" + str(year) + "/分析師預測" + str(year) +  ".csv", newline='
 
 
 with open('./'+ str(year) + '/AF_Actual' + str(year) + '.csv', newline='', encoding="utf-8", errors='ignore') as AF:
->>>>>>> 458ed2e3aa222042a11dd957688ad6974e4dd142
     rows = csv.reader(AF)
 
     header = next(rows)
