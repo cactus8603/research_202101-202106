@@ -118,7 +118,7 @@ for i in range(1, len(stkcd_list)):
     # 找相同的分析師
     for j in range(stkcd_index[i][1], len(predict_stock)):
         if (stkcd == int(predict_stock[j][0])):
-            predicter = predict_stock[j][4]
+            # 紀錄
             date = predict_stock[j][1]
             AnanmID = predict_stock[j][3]
             ReportID = predict_stock[j][5]
@@ -137,28 +137,30 @@ for i in range(1, len(stkcd_list)):
             
             # 記錄到各個季度中
             if (season == 1):
-                predicter_list_Q1.append([stkcd, predicter, AnanmID, ReportID, InstitutionID, Brokern, Feps])
+                predicter_list_Q1.append([stkcd, AnanmID, ReportID, InstitutionID, Feps])
             elif (season == 2):
-                predicter_list_Q2.append([stkcd, predicter, AnanmID, ReportID, InstitutionID, Brokern, Feps])
+                predicter_list_Q2.append([stkcd, AnanmID, ReportID, InstitutionID, Feps])
             elif (season == 3):
-                predicter_list_Q3.append([stkcd, predicter, AnanmID, ReportID, InstitutionID, Brokern, Feps])
+                predicter_list_Q3.append([stkcd, AnanmID, ReportID, InstitutionID, Feps])
             elif (season == 4):
-                predicter_list_Q4.append([stkcd, predicter, AnanmID, ReportID, InstitutionID, Brokern, Feps])
+                predicter_list_Q4.append([stkcd, AnanmID, ReportID, InstitutionID, Feps])
         elif (stkcd != int(predict_stock[j][0])): break;
+
 
 # print(predicter_list_Q1)
 # print(predicter_list)
 
 # 找前後一季都有相同的分析師
-influential_predicter = [['stkcd', 'season', 'Ananm']]
-influential_predicter_and_value = [['stkcd', 'Ananm', 'front', 'next', 'AnanmID', 'InstitutionID', 'Brokern']]
+influential_predicter = [['stkcd', 'season', 'AnanmID']]
+influential_predicter_and_value = [['stkcd', 'front', 'next', 'AnanmID', 'InstitutionID', 'Brokern']]
 calculate_value = [['FE1', 'FE2', 'FE3', 'FE4']]
 
-for i in range(1, len(stkcd_list)):
+for i in range(1, len(stkcd_index)):
     # 取得股票代號
-    stkcd = int(stkcd_list[i])
-    print("stkcd:", stkcd)
-    print("stkcd_index", stkcd_index[i][1])
+    stkcd = int(stkcd_index[i][0])
+    # print("stkcd:", stkcd)
+    # print("stkcd_index", stkcd_index[i][1])
+
     # 
     
     for j in range(stkcd_index[i][1], len(predict_stock)):
@@ -166,10 +168,15 @@ for i in range(1, len(stkcd_list)):
         if (stkcd == int(predict_stock[j][0])):
 
             season = int(stkcd_index[i][2])
+            # print(stkcd == int(predict_stock[j][0]))
+            
             # print("season", season)
+            
             if (season == 1):
                 if (year == 2017): break;
+                print("season1 finish")
                 # elif:
+            """
             elif (season == 2):
                 front_season_predicter = []
                 front_predicter =  []
@@ -185,7 +192,7 @@ for i in range(1, len(stkcd_list)):
 
                     # 相同股票代碼
                     if (int(predicter_list_Q1[k][0]) == stkcd):
-                        # 紀錄 predicter, Feps
+                        # 紀錄 predicterID, Feps
 
                         front_season_predicter.append([
                             predicter_list_Q1[k][1], 
@@ -208,7 +215,7 @@ for i in range(1, len(stkcd_list)):
                     if (int(predicter_list_Q3[k][0]) == stkcd):
                         # for l in range(len(front_season_predicter)-1):
                         
-                        # 前後一季predicter比較
+                        # 前後一季predicterID比較
                         if (predicter_list_Q3[k][1] in front_predicter):
                             break;
                             # 紀錄 股票代號、季度、分析師
@@ -227,15 +234,16 @@ for i in range(1, len(stkcd_list)):
                                 predicter_list_Q3[k][4],
                                 predicter_list_Q3[k][5]
                                 ])
-                            
+                            print("seson2 finish")
+            """
+            if (season == 3):
                 
-                   
-            elif (season == 3):
                 front_season_predicter = []
                 front_predicter = []
                 # front_season_predicter_and_feps = []
                 # 紀錄前一季的資料
                 for k in range(len(predicter_list_Q2)):
+                    # print("Season3 in")
                     # 檢查下一項資料是否相同，若相同則以新資料為主
                     if (k < len(predicter_list_Q2)-1):
                         temp = k + 1
@@ -245,11 +253,10 @@ for i in range(1, len(stkcd_list)):
 
                     # 相同股票代碼
                     if (int(predicter_list_Q2[k][0]) == stkcd):
-                        # 紀錄 predicter, Feps
-
+                        # 紀錄 predicterID, Feps
                         front_season_predicter.append([
                             predicter_list_Q2[k][1], 
-                            predicter_list_Q2[k][6]
+                            predicter_list_Q2[k][4]
                             ])
                         front_predicter.append([
                             predicter_list_Q2[k][1]
@@ -259,6 +266,7 @@ for i in range(1, len(stkcd_list)):
                 
                 for k in range(len(predicter_list_Q4)):
                     # 檢查一下一項資料，若相同則以新資料為主
+                    
                     if (k < len(predicter_list_Q2)-1):
                         temp = k + 1
                         if (predicter_list_Q2[k][1] == predicter_list_Q2[temp][1]):
@@ -269,10 +277,11 @@ for i in range(1, len(stkcd_list)):
                     # 相同股票代碼
                     if (int(predicter_list_Q4[k][0]) == stkcd):
                         # for l in range(len(front_season_predicter)-1):
-                        # 前後一季predicter比較
-                        
+                        # 前後一季predicterID比較
+                        print( type(predicter_list_Q4[k][1]))
                         if (predicter_list_Q4[k][1] in front_predicter):
-                            print(predicter_list_Q4[k][1] in front_predicter)
+                            print("next")
+                            # print(predicter_list_Q4[k][1] in front_predicter)
                             
                             # 紀錄 股票代號、季度、分析師
                             influential_predicter.append([
@@ -280,18 +289,16 @@ for i in range(1, len(stkcd_list)):
                                 3, 
                                 predicter_list_Q4[k][1]
                                 ])
-                            # 紀錄 股票代號、分析師、前一季feps，後一季feps，分析師代碼、證券商ID，證券商
+                            # 紀錄 股票代號、分析師ID、前一季feps，後一季feps、證券商ID
                             influential_predicter_and_value.append([
                                 stkcd, 
                                 predicter_list_Q4[k][1], 
                                 front_season_predicter[1], 
-                                predicter_list_Q4[k][6], 
-                                predicter_list_Q4[k][2],
-                                predicter_list_Q4[k][4],
-                                predicter_list_Q4[k][5]
+                                predicter_list_Q4[k][4], 
+                                predicter_list_Q4[k][3]
                                 ])
-                            # print(k,l)
-                                
+                            print("season3 finish")
+                """
                     # print("ok season4")
                 print(front_predicter)
                 print(len(front_predicter))
@@ -304,7 +311,7 @@ for i in range(1, len(stkcd_list)):
 print(influential_predicter)
 print(influential_predicter_and_value)
 
-
+"""
 
 with open('./Result/' + str(year) + '/' + str(year) + '_具有影響力之分析師.csv','w', newline='', encoding="utf-8") as f:
     writeCsv = csv.writer(f)
@@ -331,3 +338,4 @@ for i in range(1, 10):
 
 # 在"AF_Actualyear.csv"檔案中尋找該股票代號和AEPS
 
+"""
