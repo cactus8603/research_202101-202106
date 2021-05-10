@@ -8,7 +8,7 @@ if __name__ == '__main__':
 
 
     
-    moreOrLess = '小'
+    moreOrLess = '大'
     record = '前本下'
 
     path = './Result/Stdrank/影響力' + str(moreOrLess) +  '於2.5(' + str(record) + ').xlsx'
@@ -29,7 +29,7 @@ if __name__ == '__main__':
         season = int(output[index][2])
         lastRow = index-1
         nextRow = index+1
-        """
+        
         # for all：本-前
         # if stkcd is same for all：本-前
         
@@ -38,7 +38,7 @@ if __name__ == '__main__':
             # if year is same
             if (year == output[lastRow][1]):
                 # if is next season
-                if (season == output[lastRow][2]):
+                if (season == output[lastRow][2]+1):
                     output[index][4] = output[index][3] - output[lastRow][3]
                     # print(output[index][4])
                     
@@ -47,7 +47,7 @@ if __name__ == '__main__':
                 # if is next season
                 if (season == output[lastRow][2]-3):
                     output[index][4] = output[index][3] - output[lastRow][3]
-        """
+        
         """
         # if stkcd is same for 前下：下-前
         if (stkcd == output[index-2][0]):
@@ -61,7 +61,7 @@ if __name__ == '__main__':
                 if (season == output[index-2][2]-2):
                     output[index][4] = output[index][3]-output[index-2][3]
         """
-        
+        """
         # if stkcd is same for 前本下：下-前
         if (output[index-1][0] == output[index+1][0]): # if the stkcd of lastrow and nextrow is the same, the stkcd of this row is the same
             # the year of lastRow and nextRow is the same
@@ -73,7 +73,7 @@ if __name__ == '__main__':
             elif (output[index-1][1] == output[index+1][1]-1):
                 if (output[index+1][2] == output[index-1][2]-2):
                     output[index][4] = output[index+1][3] - output[index-1][3]
-        
+        """
 
 
 
