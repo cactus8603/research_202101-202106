@@ -27,8 +27,8 @@ def replace():
 if __name__ == '__main__':
     # replace()
 
-    # Already Done: less (aB, aBc, aC), more (aB, aBc, aC)
-    # Prepare to start: less (), more (aBc)
+    # Already Done: less (), more ()
+    # Prepare to start: less (aB, aBc, aC), more (aB, aBc, aC)
 
     year = 2017
     moreOrLess = 'more'
