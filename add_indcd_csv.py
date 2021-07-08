@@ -10,7 +10,7 @@ industrial_code = []
 # 欲刪除產業代碼
 industrial_code_to_delete = ["J66", "J67", "J68", "J69"]
 delete_total_kinds = []
-year = 2017
+year = 2020
 # year = 2018
 # year = 2019
 
@@ -57,14 +57,17 @@ for i in trange(1, len(total_stock)):
             break
     
     # print(row_temp, industrial_code_stkcd, stock_stkcd)
-    # print(k)
-    # 更新到該年最新的產業代碼
+
+    # 更新到該年最新的產業代碼 
+    # 2020 不需要這部分
+    """
     for j in range(row_temp, len(industrial_code)+1):
         if (industrial_code[j][0] != industrial_code[j+1][0]): 
             row_temp = j
             # print(row_temp)
             break
-
+    """
+    
     # 取出產業代碼中的stkcd
     industrial_code_stkcd = int(industrial_code[row_temp][0])
 
@@ -74,7 +77,7 @@ for i in trange(1, len(total_stock)):
     if(stock_stkcd==industrial_code_stkcd):
         # print(stock_stkcd, industrial_code_stkcd)
         # 取出產業代碼
-        industrial_code_indcd = industrial_code[row_temp][2]
+        industrial_code_indcd = industrial_code[row_temp][3]
 
         total_stock[i][11] = industrial_code_indcd
 
@@ -85,7 +88,7 @@ for i in trange(1, len(total_stock)):
             delete_stock[len(delete_stock)-1][11] = industrial_code_indcd
             if (stock_stkcd not in delete_total_kinds):
                 delete_total_kinds.append(stock_stkcd)
-        elif( temp == 2 or temp == 9 ):
+        elif( temp == 2 or temp == 9 or temp == 8):
             # 刪除2或9開頭股票代碼
             continue;
             """

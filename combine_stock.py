@@ -10,8 +10,8 @@ new_stock_sheet = new_stock['Sheet']
 title = ["PostDate", "Stkcd", "TotalPosts", "AvgReadings", "AvgComments", "AvgNetComments", "AvgThumbUps", "AvgUserBarAge", "AvgUserInfluIndex", "AvgUserPosts", "AvgUserComments", "Indcd"]
 new_stock_sheet.append(title)
 
-index = [1, 2]
-year = 2018
+index = [1, 2, 3]
+year = 2020
 """
 # 讀取股吧內容
 stock = openpyxl.load_workbook("./" + str(year) + "/" + str(year) + str(index[0]) + "股吧.xlsx")
