@@ -107,15 +107,15 @@ for i in trange(1, len(total_stock)):
 
 with open('./Result/' + str(year) + '/' + str(year) + '_加入產業代碼股吧.csv','w', newline='') as f:
     writeCsv = csv.writer(f)
-    total_stock[0][12] = ''
-    total_stock[0][13] = ''
+    # total_stock[0][12] = ''
+    # total_stock[0][13] = ''
     writeCsv.writerows(total_stock)
 
 
 with open('./Result/' + str(year) + '/' + str(year) + '_金融產業股吧名單.csv','w', newline='') as f:
     writeCsv = csv.writer(f)
-    delete_stock[1][12] = len(delete_stock) -1 
-    delete_stock[1][13] = len(delete_total_kinds)
+    delete_stock[1][11] = len(delete_stock) -1 
+    delete_stock[2][11] = len(delete_total_kinds)
 
     writeCsv.writerows(delete_stock)
     # print(delete_stock[0][1])
@@ -123,8 +123,8 @@ with open('./Result/' + str(year) + '/' + str(year) + '_金融產業股吧名單
 
 with open('./Result/' + str(year) + '/' + str(year) + '_刪除金融產業後剩餘股吧名單.csv','w', newline='') as f:
     writeCsv = csv.writer(f)
-    remain_stock[0][12] = ''
-    remain_stock[0][13] = ''
+    # remain_stock[0][12] = ''
+    # remain_stock[0][13] = ''
     writeCsv.writerows(remain_stock)
 
 print("finish")
